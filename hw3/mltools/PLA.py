@@ -26,8 +26,8 @@ class PLA():
 			return self.train_X, self.train_y
 		data = np.loadtxt(input_data_file, dtype='float')
 		self.train_X = np.ones(data.shape)
-		self.train_X[:,1:] = data[:,:4]
-		self.train_y = data[:, 4]
+		self.train_X[:,1:] = data[:,:-1]
+		self.train_y = data[:, -1]
 		self.N = len(self.train_X)
 		self.data_flawness = np.zeros(self.N)
 		return self.train_X, self.train_y
@@ -41,8 +41,8 @@ class PLA():
 
 		data = np.loadtxt(input_data_file, dtype='float')
 		self.test_X= np.ones(data.shape)
-		self.test_X[:,1:] = data[:,:4]
-		self.test_y = data[:, 4]
+		self.test_X[:,1:] = data[:,:-1]
+		self.test_y = data[:, -1]
 		return self.test_X, self.test_y
 
 	def init_weight(self, mode='normal'):
